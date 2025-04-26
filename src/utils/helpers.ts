@@ -92,7 +92,7 @@ export function findDirection(matrix: string[][], position: Position): Direction
     return direction;
 }
 
-export function getStartPositionIfStartAndEndPositionsAreValid(matrix: string[][]): Position {
+export function validateAndGetStartPosition(matrix: string[][]): Position {
     const startPosition: Position | null = findCharacterPosition(matrix, START_CHARACTER);
     const endPosition: Position | null = findCharacterPosition(matrix, END_CHARACTER);
 

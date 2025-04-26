@@ -3,7 +3,7 @@ import { Step } from './interfaces/step.interface';
 import {
     areCharAndDirectionSynced,
     changeDirection,
-    getStartPositionIfStartAndEndPositionsAreValid,
+    validateAndGetStartPosition,
     includesPosition,
     findDirection,
     getCharacterAtPosition,
@@ -26,7 +26,7 @@ function code_challenge(matrix: string[][]): FinalPath {
     const letters: string[] = [];
     const visitedPositions: Position[] = [];
 
-    let position = getStartPositionIfStartAndEndPositionsAreValid(matrix);
+    let position = validateAndGetStartPosition(matrix);
     let direction = findDirection(matrix, position);
 
     steps.push({ char: START_CHARACTER, position: { ...position }, direction: null });
