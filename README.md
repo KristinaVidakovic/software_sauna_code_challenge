@@ -117,7 +117,13 @@ You can find screenshots of the test results and coverage reports inside the `sr
 
 ## 🎥 Demo
 
+Running app using CLI
+
 ![App Running Demo](assets/demo.gif)
+
+Running tests
+
+![Test Running](assets/demo-test.gif)
 
 ---
 ## 👩‍💻 Author
