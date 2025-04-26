@@ -1,0 +1,41 @@
+# Node modules
+node_modules
+
+# Build outputs
+dist
+build
+out
+
+# Compiled JS files
+*.js
+*.jsx
+*.d.ts
+
+# Test coverage and snapshots
+coverage
+*.snap
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.*
+
+# IDE and system files
+.DS_Store
+.vscode
+.npm
+.cache
+.next
+
+# Config files (optional – remove from here if you want Prettier to format them)
+tsconfig.json
+tsconfig.*.json
+.prettierrc
+.eslintrc
+.eslintrc.js
+babel.config.js
+jest.config.ts
