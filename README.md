@@ -115,8 +115,12 @@ You can find screenshots of the test results and coverage reports inside the `sr
 
 ---
 
-## 👩‍💻 Author
+## 🎥 Demo
 
+![App Running Demo](assets/demo.gif)
+
+---
+## 👩‍💻 Author
 Made by Kristina Vidaković.
 
 - 📧 Email: [kristina.vidakovic403@gmail.com](mailto:kristina.vidakovic403@gmail.com)
