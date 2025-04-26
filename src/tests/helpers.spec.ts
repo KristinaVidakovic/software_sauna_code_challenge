@@ -6,7 +6,7 @@ import {
     findCharacterPosition,
     findDirection,
     getCharacterAtPosition,
-    getStartPositionIfStartAndEndPositionsAreValid,
+    validateAndGetStartPosition,
     hasMultipleOccurrences,
     includesPosition,
     isFakeTurn,
@@ -200,20 +200,20 @@ describe('Helper utility functions', () => {
 
     describe('Start and end position handling', () => {
         test('getStartPositionIfStartAndEndPositionsAreValid returns start position or throws appropriate errors', () => {
-            expect(getStartPositionIfStartAndEndPositionsAreValid(validMap)).toEqual({
+            expect(validateAndGetStartPosition(validMap)).toEqual({
                 x: 0,
                 y: 0,
             });
-            expect(() => getStartPositionIfStartAndEndPositionsAreValid(missingStartMap)).toThrow(
+            expect(() => validateAndGetStartPosition(missingStartMap)).toThrow(
                 ERRORS.MISSING_START,
             );
-            expect(() => getStartPositionIfStartAndEndPositionsAreValid(missingEndMap)).toThrow(
+            expect(() => validateAndGetStartPosition(missingEndMap)).toThrow(
                 ERRORS.MISSING_END,
             );
-            expect(() => getStartPositionIfStartAndEndPositionsAreValid(multipleStartsMap)).toThrow(
+            expect(() => validateAndGetStartPosition(multipleStartsMap)).toThrow(
                 ERRORS.MULTIPLE_STARTS,
             );
-            expect(() => getStartPositionIfStartAndEndPositionsAreValid(multipleEndsMap)).toThrow(
+            expect(() => validateAndGetStartPosition(multipleEndsMap)).toThrow(
                 ERRORS.MULTIPLE_ENDS,
             );
         });
