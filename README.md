@@ -82,6 +82,8 @@ Example content of a map file:
         - `errors.ts`                     # Error definitions
         - `helpers.ts`                    # Helper functions
     - `assets/`
+        - `demo.gif`                      # Running application using CLI demo
+        - `demo-test.gif`                 # Running tests with coverage demo
         - `dependences.png`               # Screenshot: installed dependencies
         - `test-coverage-1.png`           # Screenshot: helpers tests
         - `test-coverage-2.png`           # Screenshot: app tests
