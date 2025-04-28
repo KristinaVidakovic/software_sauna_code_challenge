@@ -207,9 +207,7 @@ describe('Helper utility functions', () => {
             expect(() => validateAndGetStartPosition(missingStartMap)).toThrow(
                 ERRORS.MISSING_START,
             );
-            expect(() => validateAndGetStartPosition(missingEndMap)).toThrow(
-                ERRORS.MISSING_END,
-            );
+            expect(() => validateAndGetStartPosition(missingEndMap)).toThrow(ERRORS.MISSING_END);
             expect(() => validateAndGetStartPosition(multipleStartsMap)).toThrow(
                 ERRORS.MULTIPLE_STARTS,
             );
