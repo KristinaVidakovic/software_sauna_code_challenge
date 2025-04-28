@@ -138,7 +138,7 @@ describe('App tests', () => {
     });
 
     describe('Start and end validation', () => {
-        it(`throws an error on an empty matrix`, () => {
+        it('throws an error on an empty matrix', () => {
             const matrix = [[]];
 
             expect(() => code_challenge(matrix)).toThrow(ERRORS.MISSING_START);
