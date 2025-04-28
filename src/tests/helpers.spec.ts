@@ -53,23 +53,23 @@ const missingEndMap = [['@', '-', 'S', '-']];
 
 describe('Helper utility functions', () => {
     describe('Position utilities', () => {
-        test('findCharacterPosition returns correct position or null when not found', () => {
+        it('findCharacterPosition returns correct position or null when not found', () => {
             expect(findCharacterPosition(validMap, START_CHARACTER)).toEqual({ x: 0, y: 0 });
             expect(findCharacterPosition(validMap, END_CHARACTER)).toEqual({ x: 1, y: 2 });
             expect(findCharacterPosition(validMap, validLetter)).toBeNull();
         });
 
-        test('hasMultipleOccurrences returns true for multiple characters, false otherwise', () => {
+        it('hasMultipleOccurrences returns true for multiple characters, false otherwise', () => {
             expect(hasMultipleOccurrences(multipleStartsMap, START_CHARACTER)).toBe(true);
             expect(hasMultipleOccurrences(validMap, START_CHARACTER)).toBe(false);
         });
 
-        test('getCharacterAtPosition returns the correct character or space for empty positions', () => {
+        it('getCharacterAtPosition returns the correct character or space for empty positions', () => {
             expect(getCharacterAtPosition(validMap, { x: 0, y: 0 })).toBe(START_CHARACTER);
             expect(getCharacterAtPosition(validMap, { x: 0, y: 1 })).toBe(NO_PATH_CHARACTER);
         });
 
-        test('move returns the correct position based on direction', () => {
+        it('move returns the correct position based on direction', () => {
             const position = { x: 1, y: 1 };
             expect(move(position, Direction.UP)).toEqual({ x: 1, y: 0 });
             expect(move(position, Direction.DOWN)).toEqual({ x: 1, y: 2 });
@@ -77,7 +77,7 @@ describe('Helper utility functions', () => {
             expect(move(position, Direction.RIGHT)).toEqual({ x: 2, y: 1 });
         });
 
-        test('includesPosition returns true when position is in list, false otherwise', () => {
+        it('includesPosition returns true when position is in list, false otherwise', () => {
             const positions = [
                 { x: 1, y: 2 },
                 { x: 3, y: 4 },
@@ -88,7 +88,7 @@ describe('Helper utility functions', () => {
     });
 
     describe('Character validation', () => {
-        test('isValidPathChar identifies valid path characters and excludes invalid ones', () => {
+        it('isValidPathChar identifies valid path characters and excludes invalid ones', () => {
             expect(isValidPathChar(START_CHARACTER)).toBe(true);
             expect(isValidPathChar(HORIZONTAL_CHARACTER)).toBe(true);
             expect(isValidPathChar(VERTICAL_CHARACTER)).toBe(true);
@@ -101,14 +101,14 @@ describe('Helper utility functions', () => {
             expect(isValidPathChar(specialCharacter)).toBe(false);
         });
 
-        test('isValidLetter returns true only for uppercase single letters', () => {
+        it('isValidLetter returns true only for uppercase single letters', () => {
             expect(isValidLetter(validLetter)).toBe(true);
             expect(isValidLetter(invalidLetter)).toBe(false);
             expect(isValidLetter(START_CHARACTER)).toBe(false);
             expect(isValidLetter(HORIZONTAL_CHARACTER)).toBe(false);
         });
 
-        test('areCharAndDirectionSynced correctly validates character vs movement direction', () => {
+        it('areCharAndDirectionSynced correctly validates character vs movement direction', () => {
             expect(areCharAndDirectionSynced(VERTICAL_CHARACTER, Direction.UP)).toBe(true);
             expect(areCharAndDirectionSynced(HORIZONTAL_CHARACTER, Direction.UP)).toBe(false);
             expect(areCharAndDirectionSynced(HORIZONTAL_CHARACTER, Direction.RIGHT)).toBe(true);
@@ -121,7 +121,7 @@ describe('Helper utility functions', () => {
     });
 
     describe('Direction logic', () => {
-        test('findDirection returns correct direction or throws errors for invalid paths', () => {
+        it('findDirection returns correct direction or throws errors for invalid paths', () => {
             expect(findDirection(validMap, { x: 0, y: 0 })).toBe(Direction.RIGHT);
             expect(() => findDirection(multipleStartPathsMap, { x: 2, y: 0 })).toThrow(
                 ERRORS.MULTIPLE_START_PATHS,
@@ -129,7 +129,7 @@ describe('Helper utility functions', () => {
             expect(() => findDirection(brokenPathMap, { x: 0, y: 0 })).toThrow(ERRORS.BROKEN_PATH);
         });
 
-        test('changeDirection correctly determines valid turns or throws on forks', () => {
+        it('changeDirection correctly determines valid turns or throws on forks', () => {
             const stepsValidMap = [
                 { char: START_CHARACTER, position: { x: 0, y: 0 }, direction: null },
                 {
@@ -186,7 +186,7 @@ describe('Helper utility functions', () => {
             ).toThrow(ERRORS.FORK_IN_PATH);
         });
 
-        test('isFakeTurn returns true for misleading corner, false otherwise', () => {
+        it('isFakeTurn returns true for misleading corner, false otherwise', () => {
             const visited = [
                 { x: 0, y: 0 },
                 { x: 1, y: 0 },
@@ -199,7 +199,7 @@ describe('Helper utility functions', () => {
     });
 
     describe('Start and end position handling', () => {
-        test('getStartPositionIfStartAndEndPositionsAreValid returns start position or throws appropriate errors', () => {
+        it('getStartPositionIfStartAndEndPositionsAreValid returns start position or throws appropriate errors', () => {
             expect(validateAndGetStartPosition(validMap)).toEqual({
                 x: 0,
                 y: 0,
