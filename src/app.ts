@@ -36,18 +36,18 @@ function code_challenge(matrix: string[][]): FinalPath {
         const nextPosition = move(position, direction);
         const nextCharacter = getCharacterAtPosition(matrix, nextPosition);
         if (nextCharacter === NO_PATH_CHARACTER) {
-            throw new Error(ERRORS.BROKEN_PATH).message;
+            throw ERRORS.BROKEN_PATH;
         }
 
         if (!isValidPathChar(nextCharacter)) {
-            throw new Error(ERRORS.INVALID_CHARACTER).message;
+            throw ERRORS.INVALID_CHARACTER;
         }
 
         if (
             !areCharAndDirectionSynced(nextCharacter, direction) &&
             !includesPosition(nextPosition, visitedPositions)
         ) {
-            throw new Error(ERRORS.INVALID_DIRECTION(direction)).message;
+            throw ERRORS.INVALID_DIRECTION(direction);
         }
 
         position = nextPosition;
@@ -62,7 +62,7 @@ function code_challenge(matrix: string[][]): FinalPath {
         if (nextCharacter === END_CHARACTER) break;
 
         if (isFakeTurn(matrix, direction, position, visitedPositions)) {
-            throw new Error(ERRORS.FAKE_TURN).message;
+            throw ERRORS.FAKE_TURN;
         }
 
         if (

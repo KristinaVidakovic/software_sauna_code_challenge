@@ -82,12 +82,12 @@ export function findDirection(matrix: string[][], position: Position): Direction
             count++;
             direction = d;
             if (count > 1) {
-                throw new Error(ERRORS.MULTIPLE_START_PATHS).message;
+                throw ERRORS.MULTIPLE_START_PATHS;
             }
         }
     }
     if (direction === null) {
-        throw new Error(ERRORS.BROKEN_PATH).message;
+        throw ERRORS.BROKEN_PATH;
     }
     return direction;
 }
@@ -97,19 +97,19 @@ export function validateAndGetStartPosition(matrix: string[][]): Position {
     const endPosition: Position | null = findCharacterPosition(matrix, END_CHARACTER);
 
     if (!startPosition) {
-        throw new Error(ERRORS.MISSING_START).message;
+        throw ERRORS.MISSING_START;
     }
 
     if (!endPosition) {
-        throw new Error(ERRORS.MISSING_END).message;
+        throw ERRORS.MISSING_END;
     }
 
     if (hasMultipleOccurrences(matrix, START_CHARACTER)) {
-        throw new Error(ERRORS.MULTIPLE_STARTS).message;
+        throw ERRORS.MULTIPLE_STARTS;
     }
 
     if (hasMultipleOccurrences(matrix, END_CHARACTER)) {
-        throw new Error(ERRORS.MULTIPLE_ENDS).message;
+        throw ERRORS.MULTIPLE_ENDS;
     }
 
     return startPosition;
@@ -138,7 +138,7 @@ export function changeDirection(
             count++;
             direction = newDirection;
             if (count > 1) {
-                throw new Error(ERRORS.FORK_IN_PATH).message;
+                throw ERRORS.FORK_IN_PATH;
             }
         }
     }
