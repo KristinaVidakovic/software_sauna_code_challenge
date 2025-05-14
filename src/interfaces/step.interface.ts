@@ -4,5 +4,5 @@ import type { Position } from './position.interface';
 export interface Step {
     char: string;
     position: Position;
-    direction: Direction | null;
+    direction: Direction;
 }
