@@ -29,7 +29,7 @@ function code_challenge(matrix: string[][]): FinalPath {
     let position = validateAndGetStartPosition(matrix);
     let direction = findDirection(matrix, position);
 
-    steps.push({ char: START_CHARACTER, position: { ...position }, direction: null });
+    steps.push({ char: START_CHARACTER, position: { ...position }, direction: direction });
     visitedPositions.push(position);
 
     while (direction) {
