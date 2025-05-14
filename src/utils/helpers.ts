@@ -72,24 +72,14 @@ export function isValidLetter(char: string): boolean {
 }
 
 export function findDirection(matrix: string[][], position: Position): Direction {
-    let direction: Direction | null = null;
-    const directions = [Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT];
-    let count = 0;
-    for (const d of directions) {
-        const nextPosition = move(position, d);
-        const nextCharacter = getCharacterAtPosition(matrix, nextPosition);
-        if (isValidPathChar(nextCharacter)) {
-            count++;
-            direction = d;
-            if (count > 1) {
-                throw ERRORS.MULTIPLE_START_PATHS;
-            }
-        }
-    }
-    if (direction === null) {
+    const validDirections = getValidStartDirections(matrix, position);
+    if (validDirections.length === 0) {
         throw ERRORS.BROKEN_PATH;
     }
-    return direction;
+    if (validDirections.length > 1) {
+        throw ERRORS.MULTIPLE_START_PATHS;
+    }
+    return validDirections[0];
 }
 
 export function validateAndGetStartPosition(matrix: string[][]): Position {
@@ -160,4 +150,12 @@ export function isFakeTurn(
         nextCharacter !== NO_PATH_CHARACTER &&
         !includesPosition(nextPosition, visitedPositions)
     );
+}
+
+function getValidStartDirections(matrix: string[][], position: Position): Direction[] {
+    return Object.values(Direction).filter((direction) => {
+        const nextPosition = move(position, direction);
+        const nextCharacter = getCharacterAtPosition(matrix, nextPosition);
+        return isValidPathChar(nextCharacter);
+    });
 }
