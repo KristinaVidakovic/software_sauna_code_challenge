@@ -6,13 +6,13 @@ import {
     findCharacterPosition,
     findDirection,
     getCharacterAtPosition,
-    validateAndGetStartPosition,
     hasMultipleOccurrences,
     includesPosition,
     isFakeTurn,
     isValidLetter,
     isValidPathChar,
     move,
+    validateAndGetStartPosition,
 } from '../utils/helpers';
 import {
     CORNER_CHARACTER,
@@ -131,7 +131,7 @@ describe('Helper utility functions', () => {
 
         it('changeDirection correctly determines valid turns or throws on forks', () => {
             const stepsValidMap = [
-                { char: START_CHARACTER, position: { x: 0, y: 0 }, direction: null },
+                { char: START_CHARACTER, position: { x: 0, y: 0 }, direction: Direction.RIGHT },
                 {
                     char: HORIZONTAL_CHARACTER,
                     position: { x: 1, y: 0 },
@@ -149,7 +149,7 @@ describe('Helper utility functions', () => {
             );
 
             const stepsForCornerWithLetterMap = [
-                { char: START_CHARACTER, position: { x: 0, y: 0 }, direction: null },
+                { char: START_CHARACTER, position: { x: 0, y: 0 }, direction: Direction.RIGHT },
                 { char: validLetter, position: { x: 1, y: 0 }, direction: Direction.RIGHT },
             ];
             expect(
@@ -162,7 +162,7 @@ describe('Helper utility functions', () => {
             ).toBe(Direction.DOWN);
 
             const stepsInvalidMap = [
-                { char: START_CHARACTER, position: { x: 1, y: 1 }, direction: null },
+                { char: START_CHARACTER, position: { x: 1, y: 1 }, direction: Direction.RIGHT },
                 {
                     char: HORIZONTAL_CHARACTER,
                     position: { x: 2, y: 1 },
